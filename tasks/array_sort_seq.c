@@ -3,8 +3,8 @@
 #include <time.h>
 #include <omp.h>
 
-#define N 10
-#define MAX_VAL 100000
+#define N 1000000
+#define MAX_VAL 100
 
 void quick_sort(int *arr, int low, int high);
 int partition(int *arr, int low, int high);
