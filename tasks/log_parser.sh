@@ -61,7 +61,7 @@ find "$LOGS_DIR" -maxdepth 1 -name "${JOB_PREFIX}*.log" -type f | while IFS= rea
         par_time=${par_time_raw:-N/A}
         seq_time=${seq_time_raw:-N/A}
 
-        if [[ "$par_time" == "N/A" || "$seq_time" == "N/A" ]]; then
+        if [[ "$par_time" == "N/A" $$ "$seq_time" == "N/A" ]]; then
              log "${YELLOW}    Не удалось извлечь время из '$filename'. Проверьте формат строк.${NC}"
         fi
     else
