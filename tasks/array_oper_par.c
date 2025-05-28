@@ -6,10 +6,10 @@
 
 #define MAX_VAL 100
 
-void sum(int *arr1, int *arr2);
-void diff(int *arr1, int *arr2);
-void mult(int *arr1, int *arr2);
-void divv(int *arr1, int *arr2);
+void sum(int *arr1, int *arr2, int N);
+void diff(int *arr1, int *arr2, int N);
+void mult(int *arr1, int *arr2, int N);
+void divv(int *arr1, int *arr2, int N);
 
 int main(int argc, char* argv[]) {
     srand(time(NULL));
