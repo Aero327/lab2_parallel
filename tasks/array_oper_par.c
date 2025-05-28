@@ -46,16 +46,16 @@ int main(int argc, char* argv[]) {
     #pragma omp parallel sections
     {
         #pragma omp section
-        { sum(array1, array2); }
+        { sum(array1, array2, N); }
         
         #pragma omp section
-        { diff(array1, array2); }
+        { diff(array1, array2, N); }
         
         #pragma omp section
-        { mult(array1, array2); }
+        { mult(array1, array2, N); }
         
         #pragma omp section
-        { divv(array1, array2); }
+        { divv(array1, array2, N); }
     }
     end = omp_get_wtime();
 
@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-void sum(int *arr1, int *arr2) {
+void sum(int *arr1, int *arr2, int N) {
     int *sum_arr = (int*)malloc(N * sizeof(int));
 
     #pragma omp parallel for
@@ -76,7 +76,7 @@ void sum(int *arr1, int *arr2) {
     free(sum_arr);
 }
 
-void diff(int *arr1, int *arr2) {
+void diff(int *arr1, int *arr2, int N) {
     int *diff_arr = (int*)malloc(N * sizeof(int));
 
     #pragma omp parallel for
@@ -87,7 +87,7 @@ void diff(int *arr1, int *arr2) {
     free(diff_arr);
 }
 
-void mult(int *arr1, int *arr2) {
+void mult(int *arr1, int *arr2, int N) {
     int *mult_arr = (int*)malloc(N * sizeof(int));
 
     #pragma omp parallel for
@@ -98,7 +98,7 @@ void mult(int *arr1, int *arr2) {
     free(mult_arr);
 }
 
-void divv(int *arr1, int *arr2) {
+void divv(int *arr1, int *arr2, int N) {
     int *div_arr = (int*)malloc(N * sizeof(int));
 
     #pragma omp parallel for

@@ -48,10 +48,10 @@ int main(int argc, char* argv[]) {
     double start, end;
 
     start = omp_get_wtime();
-    sum(sum_arr, array1, array2);
-    diff(diff_arr, array1, array2);
-    mult(mult_arr, array1, array2);
-    divv(div_arr, array1, array2);
+    sum(sum_arr, array1, array2, N);
+    diff(diff_arr, array1, array2, N);
+    mult(mult_arr, array1, array2, N);
+    divv(div_arr, array1, array2, N);
     end = omp_get_wtime();
 
     printf("Sequential time: %.5f seconds\n", end - start);
@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-void sum(int *sum_arr, int *arr1, int *arr2) {
+void sum(int *sum_arr, int *arr1, int *arr2, int N) {
     int *sum_arr = (int*)malloc(N * sizeof(int));
 
     for (int i = 0; i < N; i++) {
@@ -71,7 +71,7 @@ void sum(int *sum_arr, int *arr1, int *arr2) {
     free(sum_arr);
 }
 
-void diff(int *diff_arr, int *arr1, int *arr2) {
+void diff(int *diff_arr, int *arr1, int *arr2, int N) {
     int *diff_arr = (int*)malloc(N * sizeof(int));
 
     for (int i = 0; i < N; i++) {
@@ -81,7 +81,7 @@ void diff(int *diff_arr, int *arr1, int *arr2) {
     free(diff_arr);
 }
 
-void mult(int *mult_arr, int *arr1, int *arr2) {
+void mult(int *mult_arr, int *arr1, int *arr2, int N) {
     int *mult_arr = (int*)malloc(N * sizeof(int));
 
     for (int i = 0; i < N; i++) {
@@ -91,7 +91,7 @@ void mult(int *mult_arr, int *arr1, int *arr2) {
     free(mult_arr);
 }
 
-void divv(int *div_arr, int *arr1, int *arr2) {
+void divv(int *div_arr, int *arr1, int *arr2, int N) {
     int *div_arr = (int*)malloc(N * sizeof(int));
 
     for (int i = 0; i < N; i++) {

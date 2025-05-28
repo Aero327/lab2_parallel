@@ -58,10 +58,10 @@ int main(int argc, char* argv[]) {
     double start, end;
 
     start = omp_get_wtime();
-    sum(sum_arr, array1, array2);
-    diff(diff_arr, array1, array2);
-    mult(mult_arr, array1, array2);
-    divv(div_arr, array1, array2);
+    sum(sum_arr, array1, array2, N);
+    diff(diff_arr, array1, array2, N);
+    mult(mult_arr, array1, array2, N);
+    divv(div_arr, array1, array2, N);
     end = omp_get_wtime();
 
     printf("Sequential time: %.5f seconds\n", end - start);
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-void sum(int **sum_arr, int **arr1, int **arr2) {
+void sum(int **sum_arr, int **arr1, int **arr2, int N) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             sum_arr[i][j] = arr1[i][j] + arr2[i][j];
@@ -92,7 +92,7 @@ void sum(int **sum_arr, int **arr1, int **arr2) {
     }
 }
 
-void diff(int **diff_arr, int **arr1, int **arr2) {
+void diff(int **diff_arr, int **arr1, int **arr2, int N) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             diff_arr[i][j] = arr1[i][j] - arr2[i][j];
@@ -100,7 +100,7 @@ void diff(int **diff_arr, int **arr1, int **arr2) {
     }
 }
 
-void mult(int **mult_arr, int **arr1, int **arr2) {
+void mult(int **mult_arr, int **arr1, int **arr2, int N) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             mult_arr[i][j] = arr1[i][j] * arr2[i][j];
@@ -108,7 +108,7 @@ void mult(int **mult_arr, int **arr1, int **arr2) {
     }
 }
 
-void divv(int **div_arr, int **arr1, int **arr2) {
+void divv(int **div_arr, int **arr1, int **arr2, int N) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             div_arr[i][j] = arr1[i][j] / arr2[i][j];

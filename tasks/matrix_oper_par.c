@@ -61,16 +61,16 @@ int main(int argc, char* argv[]) {
     #pragma omp parallel sections
     {
         #pragma omp section
-        { sum(sum_arr, array1, array2); }
+        { sum(sum_arr, array1, array2, N); }
         
         #pragma omp section
-        { diff(diff_arr, array1, array2); }
+        { diff(diff_arr, array1, array2, N); }
         
         #pragma omp section
-        { mult(mult_arr, array1, array2); }
+        { mult(mult_arr, array1, array2, N); }
         
         #pragma omp section
-        { divv(div_arr, array1, array2); }
+        { divv(div_arr, array1, array2, N); }
     }
     end = omp_get_wtime();
 
@@ -94,7 +94,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-void sum(int **sum_arr, int **arr1, int **arr2) {
+void sum(int **sum_arr, int **arr1, int **arr2, int N) {
     #pragma omp parallel for collapse(2)
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -103,7 +103,7 @@ void sum(int **sum_arr, int **arr1, int **arr2) {
     }
 }
 
-void diff(int **diff_arr, int **arr1, int **arr2) {
+void diff(int **diff_arr, int **arr1, int **arr2, int N) {
     #pragma omp parallel for collapse(2)
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -112,7 +112,7 @@ void diff(int **diff_arr, int **arr1, int **arr2) {
     }
 }
 
-void mult(int **mult_arr, int **arr1, int **arr2) {
+void mult(int **mult_arr, int **arr1, int **arr2, int N) {
     #pragma omp parallel for collapse(2)
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -121,7 +121,7 @@ void mult(int **mult_arr, int **arr1, int **arr2) {
     }
 }
 
-void divv(int **div_arr, int **arr1, int **arr2) {
+void divv(int **div_arr, int **arr1, int **arr2, int N) {
     #pragma omp parallel for collapse(2)
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
