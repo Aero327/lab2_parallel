@@ -62,8 +62,6 @@ int main(int argc, char* argv[]) {
 }
 
 void sum(int *sum_arr, int *arr1, int *arr2, int N) {
-    int *sum_arr = (int*)malloc(N * sizeof(int));
-
     for (int i = 0; i < N; i++) {
         sum_arr[i] = arr1[i] + arr2[i];
     }
@@ -72,8 +70,6 @@ void sum(int *sum_arr, int *arr1, int *arr2, int N) {
 }
 
 void diff(int *diff_arr, int *arr1, int *arr2, int N) {
-    int *diff_arr = (int*)malloc(N * sizeof(int));
-
     for (int i = 0; i < N; i++) {
         diff_arr[i] = arr1[i] - arr2[i];
     }
@@ -82,8 +78,6 @@ void diff(int *diff_arr, int *arr1, int *arr2, int N) {
 }
 
 void mult(int *mult_arr, int *arr1, int *arr2, int N) {
-    int *mult_arr = (int*)malloc(N * sizeof(int));
-
     for (int i = 0; i < N; i++) {
         mult_arr[i] = arr1[i] * arr2[i];
     }
@@ -92,8 +86,6 @@ void mult(int *mult_arr, int *arr1, int *arr2, int N) {
 }
 
 void divv(int *div_arr, int *arr1, int *arr2, int N) {
-    int *div_arr = (int*)malloc(N * sizeof(int));
-
     for (int i = 0; i < N; i++) {
         div_arr[i] = arr1[i] / arr2[i];
     }
