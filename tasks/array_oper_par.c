@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <omp.h>
+#include <unistd.h>
 
-#define N 500000
 #define MAX_VAL 100
 
 void sum(int *arr1, int *arr2);
@@ -11,8 +11,27 @@ void diff(int *arr1, int *arr2);
 void mult(int *arr1, int *arr2);
 void divv(int *arr1, int *arr2);
 
-int main() {
+int main(int argc, char* argv[]) {
     srand(time(NULL));
+
+    int N = 100000;
+    int opt;
+
+    while ((opt = getopt(argc, argv, "n:")) != -1) {
+        switch (opt) {
+            case 'n':
+                N = atoi(optarg);
+                if (N <= 0) {
+                    fprintf(stderr, "Error: N must be a positive integer.\n");
+                    exit(EXIT_FAILURE);
+                }
+                break;
+            default:
+                fprintf(stderr, "Usage: %s [-n array_size]\n", argv[0]);
+                exit(EXIT_FAILURE);
+        }
+    }
+
     int *array1 = (int*)malloc(N * sizeof(int));
     int *array2 = (int*)malloc(N * sizeof(int));
     
