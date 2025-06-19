@@ -122,7 +122,7 @@ log()   { echo -e "[${CYAN}$(date '+%F %T')${NC}] $*"; }
 error() { log "${RED}ERROR:${NC} $*" >&2; if declare -f cleanup_resources &>/dev/null; then cleanup_resources 1; else exit 1; fi; }
 
 
-INPUT_SIZES=(100 100000 100000000)
+INPUT_SIZES=(100 100000 1000000)
 CORES=(2 4 8)          
 REPEATS=10        
 EXECUTABLES=(

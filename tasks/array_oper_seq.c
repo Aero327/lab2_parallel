@@ -56,6 +56,10 @@ int main(int argc, char* argv[]) {
 
     printf("Sequential time: %.5f seconds\n", end - start);
 
+    free(sum_arr);
+    free(div_arr);
+    free(mult_arr);
+    free(diff_arr);
     free(array1);
     free(array2);
     return 0;
@@ -65,30 +69,22 @@ void sum(int *sum_arr, int *arr1, int *arr2, int N) {
     for (int i = 0; i < N; i++) {
         sum_arr[i] = arr1[i] + arr2[i];
     }
-
-    free(sum_arr);
 }
 
 void diff(int *diff_arr, int *arr1, int *arr2, int N) {
     for (int i = 0; i < N; i++) {
         diff_arr[i] = arr1[i] - arr2[i];
     }
-
-    free(diff_arr);
 }
 
 void mult(int *mult_arr, int *arr1, int *arr2, int N) {
     for (int i = 0; i < N; i++) {
         mult_arr[i] = arr1[i] * arr2[i];
     }
-
-    free(mult_arr);
 }
 
 void divv(int *div_arr, int *arr1, int *arr2, int N) {
     for (int i = 0; i < N; i++) {
         div_arr[i] = arr1[i] / arr2[i];
     }
-
-    free(div_arr);
 }

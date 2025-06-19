@@ -62,6 +62,7 @@ int main(int argc, char* argv[]) {
     printf("Parallel time: %.5f seconds\n", end - start);
 
     free(array1);
+    free(array2);
     return 0;
 }
 
@@ -72,8 +73,6 @@ void sum(int *arr1, int *arr2, int N) {
     for (int i = 0; i < N; i++) {
         sum_arr[i] = arr1[i] + arr2[i];
     }
-
-    free(sum_arr);
 }
 
 void diff(int *arr1, int *arr2, int N) {
@@ -83,8 +82,6 @@ void diff(int *arr1, int *arr2, int N) {
     for (int i = 0; i < N; i++) {
         diff_arr[i] = arr1[i] - arr2[i];
     }
-
-    free(diff_arr);
 }
 
 void mult(int *arr1, int *arr2, int N) {
@@ -94,8 +91,6 @@ void mult(int *arr1, int *arr2, int N) {
     for (int i = 0; i < N; i++) {
         mult_arr[i] = arr1[i] * arr2[i];
     }
-
-    free(mult_arr);
 }
 
 void divv(int *arr1, int *arr2, int N) {
@@ -105,6 +100,4 @@ void divv(int *arr1, int *arr2, int N) {
     for (int i = 0; i < N; i++) {
         div_arr[i] = arr1[i] / arr2[i];
     }
-
-    free(div_arr);
 }

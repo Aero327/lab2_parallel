@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <omp.h>
+#include <math.h>
 #include <unistd.h>
 
 #define MAX_VAL 100
@@ -32,24 +33,24 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    int **array1 = malloc(N * sizeof(int *));
-	int **array2 = malloc(N * sizeof(int *));
-    int **sum_arr = malloc(N * sizeof(int *));
-    int **diff_arr = malloc(N * sizeof(int *));
-    int **mult_arr = malloc(N * sizeof(int *));
-    int **div_arr = malloc(N * sizeof(int *));
+    int **array1 = malloc((int)sqrt(N) * sizeof(int *));
+	int **array2 = malloc((int)sqrt(N) * sizeof(int *));
+    int **sum_arr = malloc((int)sqrt(N) * sizeof(int *));
+    int **diff_arr = malloc((int)sqrt(N) * sizeof(int *));
+    int **mult_arr = malloc((int)sqrt(N) * sizeof(int *));
+    int **div_arr = malloc((int)sqrt(N) * sizeof(int *));
     
-    for(int i = 0; i < N; i++) {
-		array1[i] = malloc(N * sizeof(int));
-        array2[i] = malloc(N * sizeof(int));
-        sum_arr[i] = malloc(N * sizeof(int));
-        diff_arr[i] = malloc(N * sizeof(int));
-        mult_arr[i] = malloc(N * sizeof(int));
-        div_arr[i] = malloc(N * sizeof(int));
+    for(int i = 0; i < (int)sqrt(N); i++) {
+		array1[i] = malloc((int)sqrt(N) * sizeof(int));
+        array2[i] = malloc((int)sqrt(N) * sizeof(int));
+        sum_arr[i] = malloc((int)sqrt(N) * sizeof(int));
+        diff_arr[i] = malloc((int)sqrt(N) * sizeof(int));
+        mult_arr[i] = malloc((int)sqrt(N) * sizeof(int));
+        div_arr[i] = malloc((int)sqrt(N) * sizeof(int));
     }
     
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
+    for (int i = 0; i < (int)sqrt(N); i++) {
+        for (int j = 0; j < (int)sqrt(N); j++) {
             array1[i][j] = rand() % MAX_VAL + 1;
             array2[i][j] = rand() % MAX_VAL + 1;
         }
@@ -61,22 +62,22 @@ int main(int argc, char* argv[]) {
     #pragma omp parallel sections
     {
         #pragma omp section
-        { sum(sum_arr, array1, array2, N); }
+        { sum(sum_arr, array1, array2, (int)sqrt(N)); }
         
         #pragma omp section
-        { diff(diff_arr, array1, array2, N); }
+        { diff(diff_arr, array1, array2, (int)sqrt(N)); }
         
         #pragma omp section
-        { mult(mult_arr, array1, array2, N); }
+        { mult(mult_arr, array1, array2, (int)sqrt(N)); }
         
         #pragma omp section
-        { divv(div_arr, array1, array2, N); }
+        { divv(div_arr, array1, array2, (int)sqrt(N)); }
     }
     end = omp_get_wtime();
 
     printf("Parallel time: %.5f seconds\n", end - start);
 
-    for(int i = 0; i < N; i++) {
+    for(int i = 0; i < (int)sqrt(N); i++) {
         free(array1[i]);
         free(array2[i]);
         free(sum_arr[i]);
