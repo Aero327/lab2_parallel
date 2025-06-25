@@ -9,10 +9,10 @@ NC='\033[0m'
 INPUT_SIZES=(128 131072 134217728)
 REPEATS=10
 EXECUTABLES_SOURCE=(
-  first=array_sum.c
-  second=array_sort.c
-  third=array_oper.c
-  fourth=matrix_oper.c
+  first=array_sum.cu
+  second=array_sort.cu
+  third=array_oper.cu
+  fourth=matrix_oper.cu
 )
 BIN_DIR="bin_local_test"
 CSV_RESULTS_FILE="made_with_love_by_demorgan.csv"
